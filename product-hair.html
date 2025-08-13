@@ -75,34 +75,37 @@
   .hero-title { letter-spacing: -0.01em; }
 }
 
-/* --- Mobile polish v5 --- */
-html, body { overflow-x: hidden; }
-.product-title, p, li { overflow-wrap: anywhere; }
-
-/* Avoid wide images and side-scroll */
-#hero img, .hero-img { width: 100% !important; max-width: 420px !important; height: auto !important; }
-
-/* Card image sizing on mobile */
+/* Mobile refinements */
 @media (max-width: 900px){
-  .grid { gap: 1rem; }
-  .grid.cols-3 { grid-template-columns: 1fr; }
-  .card img { width: 100%; max-width: 360px; height: auto; margin-left: auto; margin-right: auto; }
-  .container { width: 94%; }
-}
-
-/* Small phones */
-@media (max-width: 480px){
-  h1.hero-title { font-size: 1.4rem; }
-  h2.section-title { font-size: 1.2rem; }
-  .btn { padding: 0.65rem 0.9rem; font-size: 0.9rem; }
-  .card img { max-width: 300px; }
-}
-
-/* Detail page two-column sections collapse to single column cleanly */
-@media (max-width: 900px){
-  .kv { grid-template-columns: 1fr; }
-  .tabs { gap: .4rem; }
-  .tabpanel .grid { grid-template-columns: 1fr !important; }
+  /* Prevent hero image overflow */
+  .hero-img {
+    max-width: 100%;
+    height: auto;
+  }
+  /* Reduce product grid image size */
+  #products .grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+  #products img {
+    max-width: 100%;
+    height: auto;
+  }
+  /* Limit hero section 3-set image */
+  #hero img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+  /* Adjust tabpanel text padding to avoid overflow */
+  .tabpanel {
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+  body {
+    overflow-x: hidden;
+  }
 }
 </style>
 </head>
@@ -132,11 +135,11 @@ html, body { overflow-x: hidden; }
 <section>
 <div class="container">
 <div aria-label="제품 정보" class="tabs" role="tablist">
-<button aria-controls="p1" aria-selected="true" class="tab" id="t1" role="tab">요약</button>
-<button aria-controls="p2" aria-selected="false" class="tab" id="t2" role="tab">상세설명</button>
-<button aria-controls="p3" aria-selected="false" class="tab" id="t3" role="tab">전성분·정보</button>
-<button aria-controls="p4" aria-selected="false" class="tab" id="t4" role="tab">사용법·주의</button>
-<button aria-controls="p5" aria-selected="false" class="tab" id="t5" role="tab">FAQ</button>
+<button aria-controls="p1" aria-selected="true" class="tab" id="t1" role="tab" type="button">요약</button>
+<button aria-controls="p2" aria-selected="false" class="tab" id="t2" role="tab" type="button">상세설명</button>
+<button aria-controls="p3" aria-selected="false" class="tab" id="t3" role="tab" type="button">전성분·정보</button>
+<button aria-controls="p4" aria-selected="false" class="tab" id="t4" role="tab" type="button">사용법·주의</button>
+<button aria-controls="p5" aria-selected="false" class="tab" id="t5" role="tab" type="button">FAQ</button>
 </div>
 <div aria-hidden="false" aria-labelledby="t1" class="tabpanel" id="p1" role="tabpanel">
 <div class="grid" style="grid-template-columns:1.2fr .8fr">
@@ -218,19 +221,44 @@ html, body { overflow-x: hidden; }
 </div>
 </section>
 <script>
-  
-  const tabs = document.querySelectorAll('.tab');
-  const panels = document.querySelectorAll('.tabpanel');
-  tabs.forEach((tab) => { 
-    tab.addEventListener('click', () => {
-      tabs.forEach((t) => t.setAttribute('aria-selected','false'));
-      panels.forEach((p) => p.setAttribute('aria-hidden','true'));
-      tab.setAttribute('aria-selected','true');
-      const panel = document.getElementById(tab.getAttribute('aria-controls'));
-      if (panel) panel.setAttribute('aria-hidden','false');
-    });
+document.addEventListener('DOMContentLoaded', () => {
+  const tablist = document.querySelector('[role="tablist"]');
+  if (!tablist) return;
+  const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+  const getPanel = (tab) => document.getElementById(tab.getAttribute('aria-controls'));
+
+  // Ensure initial state
+  tabs.forEach((t, i) => {
+    const selected = t.getAttribute('aria-selected') === 'true';
+    const panel = getPanel(t);
+    if (panel) panel.setAttribute('aria-hidden', selected ? 'false' : 'true');
   });
 
-  </script>
-</body>
+  const activate = (newTab) => {
+    tabs.forEach((t) => t.setAttribute('aria-selected','false'));
+    tabs.forEach((t) => {
+      const p = getPanel(t);
+      if (p) p.setAttribute('aria-hidden','true');
+    });
+    newTab.setAttribute('aria-selected','true');
+    const panel = getPanel(newTab);
+    if (panel) panel.setAttribute('aria-hidden','false');
+  };
+
+  tabs.forEach((t) => {
+    t.addEventListener('click', (e) => { e.preventDefault(); activate(t); });
+    t.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        const idx = tabs.indexOf(document.activeElement);
+        if (idx >= 0) {
+          const next = e.key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+          activate(tabs[next]);
+          tabs[next].focus();
+        }
+      }
+    });
+  });
+});
+</script></body>
 </html>
