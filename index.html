@@ -51,63 +51,18 @@
       .menu{display:none}
     }
   
-/* Responsive Enhancements */
-@media (max-width: 768px) {
-  h1.hero-title { font-size: 1.8rem; }
-  h2.section-title { font-size: 1.4rem; }
-  section { padding: 2rem 0; }
-  .btn { padding: 0.7rem 1rem; font-size: 0.9rem; }
-  .container { width: 96%; }
+/* brand logo */
+.brand .brand-logo{height:28px;width:auto;display:block}
+.brand .brand-logo.blue{
+  filter: invert(36%) sepia(88%) saturate(1668%) hue-rotate(191deg) brightness(95%) contrast(101%);
 }
-@media (max-width: 480px) {
-  h1.hero-title { font-size: 1.5rem; }
-  .grid { gap: 1rem; }
-  .btn { width: 100%; justify-content: center; }
-  img { border-radius: 12px; }
-  header .nav { flex-direction: column; align-items: flex-start; }
-}
-.card-link { display:block; }
-.card-link .card { transition: transform .18s ease, box-shadow .18s ease; }
-.card-link:hover .card { transform: translateY(-3px); box-shadow: 0 12px 34px rgba(15,35,75,.18); }
-
-/* --- Mobile polish v5 --- */
-html, body { overflow-x: hidden; }
-.product-title, p, li { overflow-wrap: anywhere; }
-
-/* Avoid wide images and side-scroll */
-#hero img, .hero-img { width: 100% !important; max-width: 420px !important; height: auto !important; }
-
-/* Card image sizing on mobile */
-@media (max-width: 900px){
-  .grid { gap: 1rem; }
-  .grid.cols-3 { grid-template-columns: 1fr; }
-  .card img { width: 100%; max-width: 360px; height: auto; margin-left: auto; margin-right: auto; }
-  .container { width: 94%; }
-}
-
-/* Small phones */
-@media (max-width: 480px){
-  h1.hero-title { font-size: 1.4rem; }
-  h2.section-title { font-size: 1.2rem; }
-  .btn { padding: 0.65rem 0.9rem; font-size: 0.9rem; }
-  .card img { max-width: 300px; }
-}
-
-/* Detail page two-column sections collapse to single column cleanly */
-@media (max-width: 900px){
-  .kv { grid-template-columns: 1fr; }
-  .tabs { gap: .4rem; }
-  .tabpanel .grid { grid-template-columns: 1fr !important; }
-}
+html, body { overflow-x: hidden; } /* ensure no horizontal scroll */
 </style>
 </head>
 <body>
 <header>
 <div class="container nav">
-<div class="brand">
-<div class="logo"></div>
-<a href="#">Allrevive 15</a>
-</div>
+<div class="brand"><a aria-label="Allrevive 15 홈" class="brand-link" href="index.html"><img alt="Allrevive 15" class="brand-logo blue" src="images/logo.png"/></a></div>
 <nav class="menu">
 <a href="#features">제품 특징</a>
 <a href="#products">세트 구성</a>
@@ -155,7 +110,19 @@ html, body { overflow-x: hidden; }
 <div class="container">
 <h2 class="section-title">세트 구성</h2>
 <div class="grid cols-3" style="margin-top:1rem">
-<a class="card-link" href="product-face.html"><div class="card"><img alt="사해수 미네랄 비누" src="images/Allrevive-face.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/><h3 class="product-title">사해수 미네랄 비누</h3></div></a><a class="card-link" href="product-body.html"><div class="card"><img alt="사해수 미네랄 비누 + 멘톨 바디 비누" src="images/Allrevive-body.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/><h3 class="product-title">사해수 미네랄 비누 + 멘톨 바디 비누</h3></div></a><a class="card-link" href="product-hair.html"><div class="card"><img alt="사해수 미네랄 비누 + 맥주효모 샴푸 비누" src="images/Allrevive-hair.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/><h3 class="product-title">사해수 미네랄 비누 + 맥주효모 샴푸 비누</h3></div></a></div>
+<div class="card">
+<img alt="사해수 미네랄 비누" src="images/Allrevive-face.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/>
+<h3 class="product-title">사해수 미네랄 비누</h3>
+</div>
+<div class="card">
+<img alt="사해수 미네랄 비누 + 멘톨 바디 비누" src="images/Allrevive-hair.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/>
+<h3 class="product-title">사해수 미네랄 비누 + 멘톨 바디 비누</h3>
+</div>
+<div class="card">
+<img alt="사해수 미네랄 비누 + 맥주효모 샴푸 비누" src="images/Allrevive-body.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/>
+<h3 class="product-title">사해수 미네랄 비누 + 맥주효모 샴푸 비누</h3>
+</div>
+</div>
 </div>
 </section>
 <section id="contact">
