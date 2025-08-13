@@ -70,37 +70,34 @@
 .card-link .card { transition: transform .18s ease, box-shadow .18s ease; }
 .card-link:hover .card { transform: translateY(-3px); box-shadow: 0 12px 34px rgba(15,35,75,.18); }
 
-/* Mobile refinements */
+/* --- Mobile polish v5 --- */
+html, body { overflow-x: hidden; }
+.product-title, p, li { overflow-wrap: anywhere; }
+
+/* Avoid wide images and side-scroll */
+#hero img, .hero-img { width: 100% !important; max-width: 420px !important; height: auto !important; }
+
+/* Card image sizing on mobile */
 @media (max-width: 900px){
-  /* Prevent hero image overflow */
-  .hero-img {
-    max-width: 100%;
-    height: auto;
-  }
-  /* Reduce product grid image size */
-  #products .grid {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 1rem;
-  }
-  #products img {
-    max-width: 100%;
-    height: auto;
-  }
-  /* Limit hero section 3-set image */
-  #hero img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-    margin: 0 auto;
-  }
-  /* Adjust tabpanel text padding to avoid overflow */
-  .tabpanel {
-    padding: 1rem;
-    box-sizing: border-box;
-  }
-  body {
-    overflow-x: hidden;
-  }
+  .grid { gap: 1rem; }
+  .grid.cols-3 { grid-template-columns: 1fr; }
+  .card img { width: 100%; max-width: 360px; height: auto; margin-left: auto; margin-right: auto; }
+  .container { width: 94%; }
+}
+
+/* Small phones */
+@media (max-width: 480px){
+  h1.hero-title { font-size: 1.4rem; }
+  h2.section-title { font-size: 1.2rem; }
+  .btn { padding: 0.65rem 0.9rem; font-size: 0.9rem; }
+  .card img { max-width: 300px; }
+}
+
+/* Detail page two-column sections collapse to single column cleanly */
+@media (max-width: 900px){
+  .kv { grid-template-columns: 1fr; }
+  .tabs { gap: .4rem; }
+  .tabpanel .grid { grid-template-columns: 1fr !important; }
 }
 </style>
 </head>
