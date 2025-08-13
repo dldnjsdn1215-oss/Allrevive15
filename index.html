@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Allrevive 15 - 미네랄 3종 미용비누 세트</title>
+<meta content="Allrevive 15 인공사해수 미네랄 기반 미용비누 3종 세트 (개별 구매 불가)" name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&amp;family=Jua&amp;display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      --bg-gradient: linear-gradient(to bottom, #ffffff 0%, #e9f6ff 35%, #cfeaff 60%, #a8d8ff 80%, #7cc0ff 100%);
+      --panel:rgba(255,255,255,0.96);
+      --text:#0b0c10;
+      --muted:#445266;
+      --brand:#60a5fa;
+      --brand-weak:#38bdf8;
+      --stroke:#a2c8f5;
+      --radius:16px;
+      --shadow:0 8px 30px rgba(15,35,75,.12);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg-gradient);color:var(--text);font-family:"Pretendard",sans-serif;scroll-behavior:smooth}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{width:min(1100px,92%);margin-inline:auto}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--stroke)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700}
+    .logo{width:28px;height:28px;border-radius:8px;background:conic-gradient(from 180deg at 50% 50%, var(--brand), #8b5cf6, #60a5fa, var(--brand))}
+    .menu{display:flex;gap:1rem}
+    .menu a{padding:.5rem .75rem;border-radius:10px;color:var(--muted)}
+    .menu a:hover{background:rgba(255,255,255,.55);color:var(--text)}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:14px;border:1px solid var(--stroke);background:linear-gradient(180deg,#ffffff,#d7ecff);color:var(--text);font-weight:700;box-shadow:var(--shadow);transition:.2s transform,.2s filter}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+    .btn.primary{background:linear-gradient(180deg,var(--brand),var(--brand-weak));color:#fff;border-color:transparent}
+    h1.hero-title{font-size:2.5rem;margin:0 0 1rem;font-weight:800;text-align:center}
+    h2.section-title{font-size:1.8rem;margin:0 0 1rem;font-weight:800;text-align:center}
+    section{padding:4rem 0;border-top:1px solid var(--stroke)}
+    .grid{display:grid;gap:1.2rem}
+    .cols-3{grid-template-columns:repeat(3,1fr)}
+    .card{background:var(--panel);border:1px solid var(--stroke);border-radius:var(--radius);padding:1.1rem;box-shadow:var(--shadow)}
+    .product-title{display:block;text-align:center;line-height:1.4;word-break:keep-all}
+    .feature{display:flex;gap:1rem;align-items:flex-start}
+    .feature .icon{min-width:42px;height:42px;border-radius:12px;background:rgba(96,165,250,.15);border:1px solid rgba(96,165,250,.35);display:grid;place-items:center;font-weight:800}
+    .feature p{line-height:1.6;word-break:keep-all;margin:0}
+    @media (max-width: 900px){
+      .cols-3{grid-template-columns:1fr}
+      .menu{display:none}
+    }
+  
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  h1.hero-title { font-size: 1.8rem; }
+  h2.section-title { font-size: 1.4rem; }
+  section { padding: 2rem 0; }
+  .btn { padding: 0.7rem 1rem; font-size: 0.9rem; }
+  .container { width: 96%; }
+}
+@media (max-width: 480px) {
+  h1.hero-title { font-size: 1.5rem; }
+  .grid { gap: 1rem; }
+  .btn { width: 100%; justify-content: center; }
+  img { border-radius: 12px; }
+  header .nav { flex-direction: column; align-items: flex-start; }
+}
+.card-link { display:block; }
+.card-link .card { transition: transform .18s ease, box-shadow .18s ease; }
+.card-link:hover .card { transform: translateY(-3px); box-shadow: 0 12px 34px rgba(15,35,75,.18); }
+</style>
+</head>
+<body>
+<header>
+<div class="container nav">
+<div class="brand">
+<div class="logo"></div>
+<a href="#">Allrevive 15</a>
+</div>
+<nav class="menu">
+<a href="#features">제품 특징</a>
+<a href="#products">세트 구성</a>
+<a href="#contact">구매/제품 문의</a>
+</nav>
+</div>
+</header>
+<section id="hero">
+<div class="container" style="text-align:center;padding:3rem 0">
+<h1 class="hero-title">Allrevive 15 미네랄 3종 미용비누 세트</h1>
+<img alt="미네랄 3종 세트" src="images/Allrevive-3.png" style="max-width:500px;margin:1.5rem auto;border-radius:16px;box-shadow:var(--shadow)"/>
+<p>피부에 좋은 인공사해수 미네랄과 천연오일의 조화를 경험하세요.</p>
+<a class="btn primary" href="#products" style="margin-top:1.5rem">세트 구성 보기</a>
+</div>
+</section>
+<section id="features">
+<div class="container">
+<h2 class="section-title">제품 특징</h2>
+<div class="grid cols-3" style="margin-top:1rem">
+<div class="card feature">
+<div class="icon">🔬</div>
+<div>
+<h3>인공사해수 미네랄</h3>
+<p class="muted">피부 컨디셔닝에 도움을 주는 고함량 미네랄 베이스로 피부의 건강한 밸런스를 유지하는 데 기여합니다.</p>
+</div>
+</div>
+<div class="card feature">
+<div class="icon">🫧</div>
+<div>
+<h3>풍부한 거품 &amp; 부드러운 감촉</h3>
+<p class="muted">세정 후에도 당김을 줄이고 부드럽고 촉촉한 피부 컨디션을 오래도록 유지하도록 설계되었습니다.</p>
+</div>
+</div>
+<div class="card feature">
+<div class="icon">🌸</div>
+<div>
+<h3>8가지 천연오일 향</h3>
+<p class="muted">욕실 공간을 은은하고 기분 좋은 향으로 채우며 오래도록 잔향이 남아 힐링감을 제공합니다.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="products">
+<div class="container">
+<h2 class="section-title">세트 구성</h2>
+<div class="grid cols-3" style="margin-top:1rem">
+<a class="card-link" href="product-face.html"><div class="card">
+<img alt="사해수 미네랄 비누" src="images/Allrevive-face.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/>
+<h3 class="product-title">사해수 미네랄 비누</h3>
+</div></a>
+<a class="card-link" href="product-hair.html"><div class="card">
+<img alt="사해수 미네랄 비누 + 멘톨 바디 비누" src="images/Allrevive-hair.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/>
+<h3 class="product-title">사해수 미네랄 비누 + 멘톨 바디 비누</h3>
+</div></a>
+<a class="card-link" href="product-body.html"><div class="card">
+<img alt="사해수 미네랄 비누 + 맥주효모 샴푸 비누" src="images/Allrevive-body.png" style="border-radius:12px;box-shadow:var(--shadow);margin-bottom:0.8rem"/>
+<h3 class="product-title">사해수 미네랄 비누 + 맥주효모 샴푸 비누</h3>
+</div></a>
+</div>
+</div>
+</section>
+<section id="contact">
+<div class="container">
+<h2 class="section-title">구매/제품 문의</h2>
+<p style="text-align:center">📧 이메일: <a href="mailto:bando951226@naver.com">bando951226@naver.com</a></p>
+<p style="text-align:center">📞 대표번호: <a href="tel:15224867">1522-4867</a> / <a href="tel:01026684457">010-2668-4457</a></p>
+</div>
+</section>
+</body>
+</html>
