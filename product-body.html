@@ -68,6 +68,23 @@
 .card-link { display:block; }
 .card-link .card { transition: transform .18s ease, box-shadow .18s ease; }
 .card-link:hover .card { transform: translateY(-3px); box-shadow: 0 12px 34px rgba(15,35,75,.18); }
+
+/* PDF-based detail page polish */
+.tabs { display:flex; gap:.5rem; flex-wrap:wrap; margin: 1rem 0; }
+.tab { padding:.5rem .9rem; border:1px solid var(--stroke); border-radius:12px; background:rgba(255,255,255,.8); cursor:pointer; }
+.tab[aria-selected="true"] { background:linear-gradient(180deg,#fff,#e8f2ff); box-shadow: var(--shadow); }
+.tabpanel { display:none; }
+.tabpanel[aria-hidden="false"] { display:block; }
+.badge { display:inline-block; padding:.25rem .6rem; border:1px solid var(--stroke); border-radius:999px; font-size:.85rem; margin:.2rem .2rem 0 0; }
+.kv { display:grid; grid-template-columns: 1fr 2fr; gap:.6rem; }
+.kv .k { color: var(--muted); }
+.kv .v { font-weight:600; }
+.hero-img { max-width:520px; margin:1rem auto; border-radius:16px; box-shadow:var(--shadow) }
+.cta-row { text-align:center; margin-top:1.2rem }
+.notice { font-size:.92rem; color: var(--muted); }
+@media (max-width: 900px){
+  .kv { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -85,69 +102,124 @@
     </div>
   </header>
 
-  <section id="product-hero">
-    <div class="container" style="padding:2.2rem 0;text-align:center">
-      <p style="margin:.2rem 0 .6rem"><a href="index.html" class="btn" style="padding:.4rem .8rem;border-radius:10px">← 홈으로</a></p>
-      <h1 class="hero-title" style="margin-bottom:1rem">사해수 미네랄 비누 + 멘톨 바디 비누</h1>
-      <img src="images/Allrevive-hair.png" alt="사해수 미네랄 비누 + 멘톨 바디 비누" style="max-width:520px;margin:1rem auto;border-radius:16px;box-shadow:var(--shadow)">
-      <p class="muted" style="max-width:640px;margin:1rem auto;line-height:1.7">
-        Allrevive 15의 미네랄 베이스에 천연오일을 더해 피부 컨디셔닝과 사용감을 균형 있게 설계한 제품입니다.
-      </p>
+  <section id="hero">
+    <div class="container" style="text-align:center;padding:2.4rem 0">
+      <p style="margin:.2rem 0 .6rem"><a href="index.html#products" class="btn" style="padding:.4rem .8rem;border-radius:10px">← 세트 구성으로</a></p>
+      <h1 class="hero-title" style="margin-bottom:.5rem">사해수 미네랄 비누 + 맥주효모 샴푸 비누</h1>
+      <img src="images/Allrevive-body.png" alt="사해수 미네랄 비누 + 맥주효모 샴푸 비누" class="hero-img">
+      <div class="badge">상세페이지</div>
+      <div class="badge">PDF 기반</div>
     </div>
   </section>
 
   <section>
     <div class="container">
-      <h2 class="section-title">주요 포인트</h2>
-      <div class="grid cols-3" style="margin-top:1rem">
-        
-        <div class="card feature">
-          <div class="icon">🫧</div>
-          <div>
-            <h3>멘톨 상쾌감</h3>
-            <p class="muted">바디 사용 시 쿨링감과 청량한 마무리.</p>
+      <div class="tabs" role="tablist" aria-label="제품 정보">
+        <button class="tab" role="tab" aria-selected="true" aria-controls="p1" id="t1">요약</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2">상세설명</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p3" id="t3">전성분·정보</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p4" id="t4">사용법·주의</button>
+        <button class="tab" role="tab" aria-selected="false" aria-controls="p5" id="t5">FAQ</button>
+      </div>
+
+      <div id="p1" class="tabpanel" role="tabpanel" aria-hidden="false" aria-labelledby="t1">
+        <div class="grid" style="grid-template-columns:1.2fr .8fr">
+          <div class="card">
+            <h3 style="margin-top:0">한눈에 보는 포인트</h3>
+            <ul style="margin:.2rem 0 0; line-height:1.9">
+              <li>미네랄 소금 + 맥주효모 추출물 조합</li>
+<li>동백나무씨·피마자씨 오일 블렌딩</li>
+<li>두피·모발 컨디셔닝에 도움</li>
+            </ul>
           </div>
-        </div>
-        <div class="card feature">
-          <div class="icon">🔬</div>
-          <div>
-            <h3>미네랄 + 바디케어</h3>
-            <p class="muted">피부 컨디셔닝과 세정력을 균형 있게 설계.</p>
-          </div>
-        </div>
-        <div class="card feature">
-          <div class="icon">🌿</div>
-          <div>
-            <h3>은은한 허브향</h3>
-            <p class="muted">샤워 후 산뜻한 잔향.</p>
+          <div class="card">
+            <h3 style="margin-top:0">기본 스펙</h3>
+            <div class="kv">
+              <div class='k'>종류</div><div class='v'>효모 케어스칼프 헤어바(샴푸형 비누)</div>
+<div class='k'>향</div><div class='v'>로즈마리 계열(천연에센셜)</div>
+<div class='k'>특징</div><div class='v'>올인원 컨셉으로 간편 사용</div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <section>
-    <div class="container">
-      <div class="grid" style="grid-template-columns:1.2fr .8fr">
+      <div id="p2" class="tabpanel" role="tabpanel" aria-hidden="true" aria-labelledby="t2">
         <div class="card">
-          <h3 style="margin-top:0">전성분(요약)</h3>
-          <ul style="margin:.2rem 0 0;line-height:1.8">
-            <li>글리세린 비누 베이스</li><li>인공사해수 미네랄</li><li>코코넛 오일 / 올리브 오일</li><li>향료(천연 유래)</li><li>정제수</li><li>멘톨</li>
-          </ul>
-          <p class="muted" style="margin-top:.8rem">* 전성분은 제조 배치에 따라 다소 변동될 수 있습니다.</p>
+          <h3 style="margin-top:0">제품 상세설명</h3>
+          <p>맥주효모 추출물과 식물성 오일을 더해 모발 윤기와 사용감의 균형을 고려한 처방입니다.</p>
+<p>풍성한 거품감으로 잔여감이 적게 느껴지도록 고안되었습니다.</p>
         </div>
+      </div>
+
+      <div id="p3" class="tabpanel" role="tabpanel" aria-hidden="true" aria-labelledby="t3">
+        <div class="grid" style="grid-template-columns:1fr 1fr">
+          <div class="card">
+            <h3 style="margin-top:0">전성분(요약)</h3>
+            <ul style="margin:.2rem 0 0; line-height:1.8">
+              <li>미네랄 소금분말</li>
+<li>동백나무씨 오일</li>
+<li>피마자씨 오일</li>
+<li>맥주효모 추출물</li>
+<li>올리브오일</li>
+<li>천연에센셜 로즈마리 오일</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 style="margin-top:0">표준 상품정보</h3>
+            <div class="kv">
+              <div class="k">품질보증 기준</div><div class="v">관련 법 및 소비자 분쟁해결 기준에 따름</div>
+              <div class="k">소비자상담실</div><div class="v">1522-4867 / 010-2668-4457</div>
+              <div class="k">제조/유통</div><div class="v">PDF 표기값 반영</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="p4" class="tabpanel" role="tabpanel" aria-hidden="true" aria-labelledby="t4">
         <div class="card">
           <h3 style="margin-top:0">사용 방법</h3>
-          <ol style="margin:.2rem 0 0;line-height:1.8">
-            <li>제품에 미온수를 묻혀 거품을 충분히 냅니다.</li><li>원하는 부위에 부드럽게 마사지하듯 문지릅니다.</li><li>미온수로 깨끗이 헹구어 마무리합니다.</li>
+          <ol style="margin:.2rem 0 0; line-height:1.9">
+            <li>모발과 두피를 충분히 적신 뒤, 제품으로 거품을 내어 두피를 중심으로 마사지합니다.</li>
+<li>미온수로 깨끗이 헹구어 마무리합니다.</li>
           </ol>
+          <h3>주의사항</h3>
+          <ul style="margin:.2rem 0 0; line-height:1.9">
+            <li>눈에 들어가지 않도록 주의하고, 들어간 경우 즉시 물로 씻어내세요.</li>
+<li>이상 증상이 나타나면 사용을 중지하세요.</li>
+          </ul>
         </div>
       </div>
-      <div style="text-align:center;margin-top:1.2rem">
-        <a href="mailto:bando951226@naver.com" class="btn primary">구매/재고 문의</a>
-        <a href="tel:15224867" class="btn" style="margin-left:.5rem">전화 문의</a>
+
+      <div id="p5" class="tabpanel" role="tabpanel" aria-hidden="true" aria-labelledby="t5">
+        <div class="card">
+          <h3 style="margin-top:0">자주 묻는 질문</h3>
+          <ul style="margin:.2rem 0 0; line-height:1.9">
+            <li><b>Q.</b> 탈모에 도움이 되나요?<br><b>A.</b> 일반 화장품으로서 탈모 치료 효능을 표방하지 않습니다. 두피 컨디셔닝에 도움을 주는 사용감을 지향합니다.</li>
+<li><b>Q.</b> 지성/건성 두피 모두 사용 가능한가요?<br><b>A.</b> 개인 모발/두피 상태에 따라 사용감을 확인해 주세요.</li>
+          </ul>
+        </div>
+        <div class="cta-row">
+          <a href="mailto:bando951226@naver.com" class="btn primary">구매/재고 문의</a>
+          <a href="tel:15224867" class="btn" style="margin-left:.5rem">전화 문의</a>
+        </div>
       </div>
     </div>
   </section>
+
+  <script>
+  
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.tabpanel');
+  tabs.forEach((tab) => { 
+    tab.addEventListener('click', () => {
+      tabs.forEach((t) => t.setAttribute('aria-selected','false'));
+      panels.forEach((p) => p.setAttribute('aria-hidden','true'));
+      tab.setAttribute('aria-selected','true');
+      const panel = document.getElementById(tab.getAttribute('aria-controls'));
+      if (panel) panel.setAttribute('aria-hidden','false');
+    });
+  });
+
+  </script>
 </body>
 </html>
