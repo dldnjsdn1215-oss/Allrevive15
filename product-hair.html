@@ -222,41 +222,49 @@
 </section>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const tablist = document.querySelector('[role="tablist"]');
-  if (!tablist) return;
-  const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
-  const getPanel = (tab) => document.getElementById(tab.getAttribute('aria-controls'));
+  const tablists = document.querySelectorAll('[role="tablist"]');
+  if (!tablists.length) return;
 
-  // Ensure initial state
-  tabs.forEach((t, i) => {
-    const selected = t.getAttribute('aria-selected') === 'true';
-    const panel = getPanel(t);
-    if (panel) panel.setAttribute('aria-hidden', selected ? 'false' : 'true');
-  });
+  tablists.forEach((tablist) => {
+    const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+    const getPanel = (tab) => document.getElementById(tab.getAttribute('aria-controls'));
 
-  const activate = (newTab) => {
-    tabs.forEach((t) => t.setAttribute('aria-selected','false'));
-    tabs.forEach((t) => {
-      const p = getPanel(t);
-      if (p) p.setAttribute('aria-hidden','true');
+    // Normalize initial state: first tab selected if none marked
+    let anySelected = tabs.some(t => t.getAttribute('aria-selected') === 'true');
+    if (!anySelected && tabs.length) {
+      tabs[0].setAttribute('aria-selected','true');
+    }
+    tabs.forEach((t, i) => {
+      if (!t.hasAttribute('type')) t.setAttribute('type','button');
+      const selected = t.getAttribute('aria-selected') === 'true';
+      const panel = getPanel(t);
+      if (panel) panel.setAttribute('aria-hidden', selected ? 'false' : 'true');
     });
-    newTab.setAttribute('aria-selected','true');
-    const panel = getPanel(newTab);
-    if (panel) panel.setAttribute('aria-hidden','false');
-  };
 
-  tabs.forEach((t) => {
-    t.addEventListener('click', (e) => { e.preventDefault(); activate(t); });
-    t.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
-        e.preventDefault();
-        const idx = tabs.indexOf(document.activeElement);
-        if (idx >= 0) {
-          const next = e.key === 'ArrowRight' ? (idx + 1) % tabs.length : (idx - 1 + tabs.length) % tabs.length;
+    const activate = (newTab) => {
+      tabs.forEach((t) => t.setAttribute('aria-selected','false'));
+      tabs.forEach((t) => {
+        const p = getPanel(t);
+        if (p) p.setAttribute('aria-hidden','true');
+      });
+      newTab.setAttribute('aria-selected','true');
+      const panel = getPanel(newTab);
+      if (panel) panel.setAttribute('aria-hidden','false');
+    };
+
+    tabs.forEach((t) => {
+      t.addEventListener('click', (e) => { e.preventDefault(); activate(t); });
+      t.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+          e.preventDefault();
+          const idx = tabs.indexOf(document.activeElement);
+          const fallbackIdx = tabs.indexOf(t);
+          const baseIdx = (idx >= 0 ? idx : fallbackIdx);
+          const next = e.key === 'ArrowRight' ? (baseIdx + 1) % tabs.length : (baseIdx - 1 + tabs.length) % tabs.length;
           activate(tabs[next]);
           tabs[next].focus();
         }
-      }
+      });
     });
   });
 });
